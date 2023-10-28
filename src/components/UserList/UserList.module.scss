@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.userList {
+  text-align: center;
+  padding-top: 140px;
+  padding-bottom: 140px;
+  display: grid;
+  gap: 50px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 6fr);
+    gap: 16px;
+  }
+}

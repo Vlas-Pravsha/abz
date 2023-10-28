@@ -1,0 +1,28 @@
+.main {
+  background-image: url("/main.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 164px;
+  color: var(--text-white);
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.textContainer {
+  max-width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 11px;
+}
+@media (max-width: 360px) {
+  .textContainer {
+    min-width: 328px;
+  }
+}
