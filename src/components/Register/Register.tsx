@@ -9,6 +9,7 @@ import Upload from "../Upload/Upload";
 import styles from "./Register.module.scss";
 import { IPosition } from "@/api/positions.interfaces";
 import { useForm } from "react-hook-form";
+import Modal from "../modal/Modal";
 
 interface IPositionProps {
   positionList: IPosition[];
@@ -48,24 +49,32 @@ function validatePhoto(value: any) {
 }
 
 const Register = ({ positionList }: IPositionProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({});
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  function toogleHandleClick() {
+    setIsVisible(!isVisible);
+  }
   const onSubmit = (data: any) => {
-    fetch("https://frontend-test-assignment-api.abz.agency/api/v1/users", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error("Ошибка при отправке запроса:", error);
-      });
+    // fetch("https://frontend-test-assignment-api.abz.agency/api/v1/users", {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Ошибка при отправке запроса:", error);
+    //   });
+    setFormData(data);
+    setIsVisible(true);
+    console.log(data);
   };
 
   return (
@@ -140,6 +149,7 @@ const Register = ({ positionList }: IPositionProps) => {
           <Button onClick={handleSubmit(onSubmit)}>Sign up</Button>
         </div>
       </form>
+      {isVisible && <Modal data={formData} onClose={toogleHandleClick}></Modal>}
     </div>
   );
 };

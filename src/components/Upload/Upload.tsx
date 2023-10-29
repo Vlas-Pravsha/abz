@@ -17,27 +17,12 @@ const Upload = React.forwardRef(
     ref: React.Ref<any>
   ) => {
     const [fileName, setFileName] = useState("");
-    // const [uploaded, setUploaded] = useState("");
-
-    // const hostUrl = "http://localhost:3000/";
-
+    
     const onChangePhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target?.files?.[0];
       setFileName(file ? file.name : "");
       onChange(event);
     };
-
-    // const handleUpload = async () => {
-    //   const formData = new FormData();
-
-    //   const res = await fetch(hostUrl, {
-    //     method: "POST",
-    //     body: formData,
-    //   });
-    //   const data = await res.json();
-
-    //   setUploaded(data);
-    // };
 
     return (
       <label className={`${styles.wrap} ${error ? styles.error : ""} `}>
